@@ -9,7 +9,7 @@
 </head>
 <body>
     <div class="calculator">
-        <div class="display">17730111
+        <div class="display">80085
         </div>
         <div class="buttons">
             <div class="digits">
@@ -25,11 +25,16 @@
                 <button name="0">0</button>
             </div>
             <div class="operations">
-                <button name="plus">+</button>
-                <button name="minus">-</button>
-                <button name="mult">*</button>
-                <button name="divide">/</button>
-                <button name="clear">Clear</button>
+                <div class="operands">
+                    <button name="+">+</button>
+                    <button name="-">-</button>
+                    <button name="*">*</button>
+                    <button name="/">/</button>
+                </div>
+                <div class="special">
+                    <button name="=" id="equals">=</button>
+                    <button name="clear" id="clear">Clear</button>
+                </div>
             </div>
         </div>
     </div>

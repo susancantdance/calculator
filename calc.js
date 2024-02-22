@@ -1,21 +1,98 @@
-let a = 0;
-let b = 0;
+let a = '';
+let b = '';
 let op = '';
+let answer = '';
 
 const digitButtons = document.querySelectorAll('.digits button');
+const operandButtons = document.querySelectorAll('.operands button');
+const equals = document.querySelector('#equals');
+const clear = document.querySelector('#clear');
 let displayScreen = document.querySelector('.display');
 
-console.log(displayScreen.textContent);
-
-
 digitButtons.forEach(butt => butt.addEventListener('click', () => display(butt.name)));
+operandButtons.forEach(oper => oper.addEventListener('click', () => storeOperand(oper.name)));
+equals.addEventListener('click',() => equalsClicked());
+clear.addEventListener('click', () => clearClicked());
+
+function clearClicked(){
+    clearAll();
+    displayScreen.textContent = '0';
+}
+
+//clicked = sign
+function equalsClicked(){
+    console.log(`equals:`);
+    console.log(`op ${op}`);
+    console.log(`a ${a}`);
+    console.log(`b ${b}`);
+    
+    if (a !== '' && b !== ''){
+        a = operate(+a, +b, op);
+        displayScreen.textContent = a;
+        b = '';
+        answer = a;
+        
+    }
+    console.log(`answer ${answer}`);
+}
+
+// 1 + 2 = + 4 (7) works
+// 1 + 2 = 5 + 4 (9) doesnt work
+
+//clicked an operand that isn't = 
+function storeOperand(operName){
+    console.log(`store operand:`);
+    console.log(`op ${op}`);
+    console.log(`a ${a}`);
+    console.log(`b ${b}`);
+    console.log(`answer ${answer}`);
+   if(a !== '' && b !== ''){ //other operands - here a=3, b=3, op is +
+        a = operate(+a, +b, op);
+        displayScreen.textContent = a;
+        op = operName;
+        b = '';
+    }else if (a!== '' && b == ''){
+        console.log(`update op:${op} to operName:${operName}`);
+        op = operName;
+        answer = '';
+    }
+}
 
 function display(buttonName){
-    displayScreen.textContent = buttonName;
- 
+    console.log(`display function:`);
+    console.log(`op ${op}`);
+    console.log(`a ${a}`);
+    console.log(`b ${b}`);
+    console.log(`answer ${answer}`);
+
+    if (answer !== ''){
+        //this means that equal sign pushed and we now are entering a number
+        op = '';
+        a = '';
+        answer = '';
+    }
+    if (op == '' && b == '') {
+        a += buttonName;
+        displayScreen.textContent = a;
+        
+    } else if (op !== '' && a !==''){
+        b += buttonName;
+        displayScreen.textContent = b;
+    } 
+
+
+}
+
+   
+function clearAll(){
+    a = '';
+    b = '';
+    op = '';
+    
 }
 
 function operate(a,b,op){
+    console.log(`operating on ${a} ${op} ${b}`);
     switch(op){
         case '+':
             return add(a,b);

@@ -1,0 +1,30 @@
+If A is null, Store digits as user enters them consecutively into a string A by concatenating ("100")
+    Update display to this string with each digit
+When user hits operand button, stop
+If A is not null, store next set of digits as a second string B by concatening ("20")
+    update display to this string with each digit
+When user hits operand button, stop
+
+If user hits clear, clear display, clear variables
+If user hits a math operand and A or B are null, store operand
+    keep listening for digits
+If user hits a math operand and A and B are not null, store operand unless it is '='
+    convert string A and string B into numbers
+    call operate(A, B, operand) and
+        update display with answer
+        store answer into A (for more calcuations)
+        IF user hits another operand key
+            await digits to be entered into B
+        IF user hits another digit key
+            Clear everything
+            store digit into string A 
+
+If user hits '=' 
+    check if A & B & Operator are not null
+    if any of them are null, do nothing
+
+
+
+4 + 5 =  (9)
+9 - 3 * (6)
+2 - 5 = (7)
