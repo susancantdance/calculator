@@ -15,7 +15,10 @@ equals.addEventListener('click',() => equalsClicked());
 clear.addEventListener('click', () => clearClicked());
 
 function clearClicked(){
-    clearAll();
+    a = '';
+    b = '';
+    op = '';
+    answer = '';
     displayScreen.textContent = '0';
 }
 
@@ -83,13 +86,7 @@ function display(buttonName){
 
 }
 
-   
-function clearAll(){
-    a = '';
-    b = '';
-    op = '';
-    
-}
+
 
 function operate(a,b,op){
     console.log(`operating on ${a} ${op} ${b}`);
@@ -124,5 +121,6 @@ function multiply(a,b){
 }
 
 function divide(a,b){
-    return a / b;
+    if(b !== 0) return a / b;
+    else return "you can't do that";
 }
